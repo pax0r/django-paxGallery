@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<img src="{{ gallery.get_cover_url }}" alt="{{ gallery.name }}"/>
+    <h1>{{ gallery.name }}</h1>
+    <p>{{ gallery.description }}</p>
+<ul>
+{% for photo in photos %}
+    <li>
+        <a href="{% url 'photo-view' id=photo.id galleryslug=gallery.slug photoslug=photo.slug %}" >
+            <img width="128" height="128" src="{{ photo.image.url }}" alt="{{ photo.name }}" /><h2>{{ photo.name }}</h2>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

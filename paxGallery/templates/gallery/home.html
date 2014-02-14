@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for gallery in all_galleries %}
+    <li>
+    <a href="{% url 'gallery-view' id=gallery.id galleryslug=gallery.slug %}" >
+        <img width="128" height="128" src="{{ gallery.get_cover_url }}" alt="{{ gallery.name }}" /><h2>{{ gallery.name }}</h2>
+    </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
